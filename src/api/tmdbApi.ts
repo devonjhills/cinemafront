@@ -3,6 +3,7 @@ import type {
   MovieCreditsResponse,
   MovieDetails,
   MovieListResponse,
+  MovieVideosResponse,
 } from "../types/movie";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
@@ -32,6 +33,28 @@ export const getPopularMovies = async (
   return response.data;
 };
 
+export const getNowPlayingMovies = async (
+  page: number = 1
+): Promise<MovieListResponse> => {
+  const response = await apiClient.get<MovieListResponse>("/movie/now_playing", {
+    params: {
+      page,
+    },
+  });
+  return response.data;
+};
+
+export const getTopRatedMovies = async (
+  page: number = 1
+): Promise<MovieListResponse> => {
+  const response = await apiClient.get<MovieListResponse>("/movie/top_rated", {
+    params: {
+      page,
+    },
+  });
+  return response.data;
+};
+
 export const getMovieDetails = async (
   movieId: number
 ): Promise<MovieDetails> => {
@@ -44,6 +67,15 @@ export const getMovieCredits = async (
 ): Promise<MovieCreditsResponse> => {
   const response = await apiClient.get<MovieCreditsResponse>(
     `/movie/${movieId}/credits`
+  );
+  return response.data;
+};
+
+export const getMovieVideos = async (
+  movieId: number
+): Promise<MovieVideosResponse> => {
+  const response = await apiClient.get<MovieVideosResponse>(
+    `/movie/${movieId}/videos`
   );
   return response.data;
 };
