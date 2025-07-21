@@ -1,26 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
+  onClear: () => void;
+  value: string;
   placeholder?: string;
-  showClearButton?: boolean;
-  onClear?: () => void;
-  value?: string;
 }
 
 export const SearchBar = ({
   onSearch,
-  placeholder = "Search for movies...",
-  showClearButton = false,
   onClear,
-  value = "",
+  value,
+  placeholder = "Search for movies...",
 }: SearchBarProps) => {
-  const [searchInput, setSearchInput] = useState(value);
-
-  useEffect(() => {
-    setSearchInput(value);
-  }, [value]);
+  const [searchInput, setSearchInput] = useState("");
 
   const handleSearch = () => {
     const trimmedQuery = searchInput.trim();
@@ -31,7 +25,7 @@ export const SearchBar = ({
 
   const handleClear = () => {
     setSearchInput("");
-    onClear?.();
+    onClear();
   };
 
   return (
@@ -57,7 +51,7 @@ export const SearchBar = ({
         className="px-4 py-2 bg-black text-white text-sm border border-black hover:bg-gray-800 focus:outline-none transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-black">
         Search
       </button>
-      {showClearButton && (
+      {value && (
         <button
           onClick={handleClear}
           className="px-4 py-2 bg-white text-gray-700 text-sm border border-gray-300 hover:bg-gray-50 hover:border-gray-400 focus:outline-none transition-colors cursor-pointer">

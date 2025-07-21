@@ -14,38 +14,32 @@ export const sortOptions: SortOption[] = [
   { value: "release_date.asc", name: "Oldest First" },
 ];
 
+const getDateValue = (dateString: string | null | undefined): number => {
+  return dateString ? new Date(dateString).getTime() : 0;
+};
+
 export const sortMovies = (
   movies: MovieListEntry[],
   sortBy: string
 ): MovieListEntry[] => {
   if (!movies) return [];
-
-  const sorted = [...movies];
-  switch (sortBy) {
-    case "popularity.asc":
-      return sorted.sort((a, b) => (a.popularity || 0) - (b.popularity || 0));
-    case "vote_average.desc":
-      return sorted.sort(
-        (a, b) => (b.vote_average || 0) - (a.vote_average || 0)
-      );
-    case "vote_average.asc":
-      return sorted.sort(
-        (a, b) => (a.vote_average || 0) - (b.vote_average || 0)
-      );
-    case "release_date.desc":
-      return sorted.sort((a, b) => {
-        const dateA = a.release_date ? new Date(a.release_date).getTime() : 0;
-        const dateB = b.release_date ? new Date(b.release_date).getTime() : 0;
-        return dateB - dateA;
-      });
-    case "release_date.asc":
-      return sorted.sort((a, b) => {
-        const dateA = a.release_date ? new Date(a.release_date).getTime() : 0;
-        const dateB = b.release_date ? new Date(b.release_date).getTime() : 0;
-        return dateA - dateB;
-      });
-    case "popularity.desc":
-    default:
-      return sorted.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
-  }
+  
+  return [...movies].sort((a, b) => {
+    switch (sortBy) {
+      case "popularity.desc":
+        return (b.popularity || 0) - (a.popularity || 0);
+      case "popularity.asc":
+        return (a.popularity || 0) - (b.popularity || 0);
+      case "vote_average.desc":
+        return (b.vote_average || 0) - (a.vote_average || 0);
+      case "vote_average.asc":
+        return (a.vote_average || 0) - (b.vote_average || 0);
+      case "release_date.desc":
+        return getDateValue(b.release_date) - getDateValue(a.release_date);
+      case "release_date.asc":
+        return getDateValue(a.release_date) - getDateValue(b.release_date);
+      default:
+        return (b.popularity || 0) - (a.popularity || 0);
+    }
+  });
 };
