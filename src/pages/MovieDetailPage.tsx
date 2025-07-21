@@ -52,6 +52,7 @@ export const MovieDetailPage = () => {
   const director = getCrewByJob("Director");
   const writers = getCrewByJobs(["Screenplay", "Writer", "Story"]);
   const cast = credits?.cast || [];
+  const crew = credits?.crew || [];
 
   return (
     <div className="max-w-6xl mx-auto px-6">
@@ -61,12 +62,17 @@ export const MovieDetailPage = () => {
       <MovieHeader
         details={details}
         posterUrl={posterUrl}
-        director={director}
-        writers={writers}
         officialTrailer={officialTrailer}
       />
 
-      <MovieCast cast={cast} />
+      <div className="mt-12">
+        <MovieCast
+          cast={cast}
+          crew={crew}
+          director={director}
+          writers={writers}
+        />
+      </div>
     </div>
   );
 };
