@@ -22,79 +22,59 @@ const apiClient = axios.create({
   },
 });
 
+const fetchMovieData = async <T>(
+  endpoint: string,
+  params?: Record<string, string | number | boolean>
+): Promise<T> => {
+  const response = await apiClient.get<T>(endpoint, { params });
+  return response.data;
+};
+
 export const getPopularMovies = async (
   page: number = 1
 ): Promise<MovieListResponse> => {
-  const response = await apiClient.get<MovieListResponse>("/movie/popular", {
-    params: {
-      page,
-    },
-  });
-  return response.data;
+  return fetchMovieData<MovieListResponse>("/movie/popular", { page });
 };
 
 export const getNowPlayingMovies = async (
   page: number = 1
 ): Promise<MovieListResponse> => {
-  const response = await apiClient.get<MovieListResponse>(
-    "/movie/now_playing",
-    {
-      params: {
-        page,
-      },
-    }
-  );
-  return response.data;
+  return fetchMovieData<MovieListResponse>("/movie/now_playing", { page });
 };
 
 export const getTopRatedMovies = async (
   page: number = 1
 ): Promise<MovieListResponse> => {
-  const response = await apiClient.get<MovieListResponse>("/movie/top_rated", {
-    params: {
-      page,
-    },
-  });
-  return response.data;
+  return fetchMovieData<MovieListResponse>("/movie/top_rated", { page });
 };
 
 export const getMovieDetails = async (
   movieId: number
 ): Promise<MovieDetails> => {
-  const response = await apiClient.get<MovieDetails>(`/movie/${movieId}`);
-  return response.data;
+  return fetchMovieData<MovieDetails>(`/movie/${movieId}`);
 };
 
 export const getMovieCredits = async (
   movieId: number
 ): Promise<MovieCreditsResponse> => {
-  const response = await apiClient.get<MovieCreditsResponse>(
-    `/movie/${movieId}/credits`
-  );
-  return response.data;
+  return fetchMovieData<MovieCreditsResponse>(`/movie/${movieId}/credits`);
 };
 
 export const getMovieVideos = async (
   movieId: number
 ): Promise<MovieVideosResponse> => {
-  const response = await apiClient.get<MovieVideosResponse>(
-    `/movie/${movieId}/videos`
-  );
-  return response.data;
+  return fetchMovieData<MovieVideosResponse>(`/movie/${movieId}/videos`);
 };
 
 export const searchMovies = async (
   query: string,
   page: number = 1
 ): Promise<MovieListResponse> => {
-  const response = await apiClient.get<MovieListResponse>("/search/movie", {
-    params: {
-      query,
-      page,
-      include_adult: false,
-    },
+  return fetchMovieData<MovieListResponse>("/search/movie", {
+    query,
+    page,
+    include_adult: false,
   });
-  return response.data;
 };
 
 export const getImageUrl = (path: string, size: string = "w500"): string => {
