@@ -6,5 +6,7 @@ export const useMovieCredits = (movieId: number) => {
     queryKey: ["movie", movieId, "credits"],
     queryFn: () => getMovieCredits(movieId),
     enabled: !!movieId,
+    retry: false, // Don't retry 404s
+    staleTime: 1000 * 60 * 5,
   });
 };

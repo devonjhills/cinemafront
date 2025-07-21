@@ -6,6 +6,8 @@ export const useMovieTrailer = (movieId: number) => {
     queryKey: ["movie", movieId, "videos"],
     queryFn: () => getMovieVideos(movieId),
     enabled: !!movieId,
+    retry: false, // Don't retry 404s
+    staleTime: 1000 * 60 * 5,
   });
 
   const officialTrailer = videosQuery.data?.results.find(

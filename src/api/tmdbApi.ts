@@ -36,11 +36,14 @@ export const getPopularMovies = async (
 export const getNowPlayingMovies = async (
   page: number = 1
 ): Promise<MovieListResponse> => {
-  const response = await apiClient.get<MovieListResponse>("/movie/now_playing", {
-    params: {
-      page,
-    },
-  });
+  const response = await apiClient.get<MovieListResponse>(
+    "/movie/now_playing",
+    {
+      params: {
+        page,
+      },
+    }
+  );
   return response.data;
 };
 
@@ -77,6 +80,20 @@ export const getMovieVideos = async (
   const response = await apiClient.get<MovieVideosResponse>(
     `/movie/${movieId}/videos`
   );
+  return response.data;
+};
+
+export const searchMovies = async (
+  query: string,
+  page: number = 1
+): Promise<MovieListResponse> => {
+  const response = await apiClient.get<MovieListResponse>("/search/movie", {
+    params: {
+      query,
+      page,
+      include_adult: false,
+    },
+  });
   return response.data;
 };
 

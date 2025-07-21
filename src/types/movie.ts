@@ -38,7 +38,7 @@ export interface MovieBase {
   vote_count: number;
 }
 
-export interface Movie extends MovieBase {
+export interface MovieListEntry extends MovieBase {
   genre_ids: number[];
 }
 
@@ -93,7 +93,7 @@ export interface MovieVideosResponse {
 
 export interface MovieListResponse {
   page: number;
-  results: Movie[];
+  results: MovieListEntry[];
   total_pages: number;
   total_results: number;
 }

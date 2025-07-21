@@ -6,5 +6,7 @@ export const useMovieDetails = (movieId: number) => {
     queryKey: ["movie", movieId, "details"],
     queryFn: () => getMovieDetails(movieId),
     enabled: !!movieId,
+    retry: false, // Don't retry 404s
+    staleTime: 1000 * 60 * 5,
   });
 };

@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   Disclosure,
   DisclosureButton,
@@ -15,18 +15,37 @@ import { ActorCard } from "../components/ActorCard";
 
 export const MovieDetailPage = () => {
   const { movieId } = useParams<{ movieId: string }>();
+  const navigate = useNavigate();
   const id = Number(movieId);
 
   const { data: details, isLoading, isError, error } = useMovieDetails(id);
   const { data: credits } = useMovieCredits(id);
   const { officialTrailer } = useMovieTrailer(id);
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   if (isLoading)
     return <div className="text-center p-10">Loading movie details...</div>;
   if (isError)
     return (
-      <div className="text-red-600 text-center p-10">
-        Error loading movie: {(error as Error).message}
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <button
+          onClick={handleBack}
+          className="inline-flex items-center gap-1 text-sm border rounded-md px-3 py-1 hover:bg-gray-50 transition-colors mb-6 cursor-pointer">
+          <ArrowLeftIcon className="w-4 h-4" />
+          <span>Back</span>
+        </button>
+        <div className="text-center p-10">
+          <h1 className="text-2xl font-medium mb-4">Movie Not Found</h1>
+          <p className="text-gray-600 mb-4">
+            This movie may no longer be available or the link may be incorrect.
+          </p>
+          <p className="text-sm text-gray-500">
+            Error: {(error as Error).message}
+          </p>
+        </div>
       </div>
     );
   if (!details) return <div className="text-center p-10">Movie not found.</div>;
@@ -45,12 +64,12 @@ export const MovieDetailPage = () => {
   return (
     <div className="bg-white min-h-screen">
       <div className="max-w-6xl mx-auto px-6 py-6">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1 text-sm border rounded-md px-3 py-1 hover:bg-gray-50 transition-colors mb-6">
+        <button
+          onClick={handleBack}
+          className="inline-flex items-center gap-1 text-sm border rounded-md px-3 py-1 hover:bg-gray-50 transition-colors mb-6 cursor-pointer">
           <ArrowLeftIcon className="w-4 h-4" />
-          <span>Return Home</span>
-        </Link>
+          <span>Back</span>
+        </button>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 pb-12">
@@ -66,7 +85,9 @@ export const MovieDetailPage = () => {
           <div className="flex-1 min-w-0">
             <h1 className="text-3xl font-medium mb-1">{details.title}</h1>
             <p className="text-gray-500 mb-4">
-              {details.release_date.substring(0, 4)}
+              {details.release_date
+                ? details.release_date.substring(0, 4)
+                : "Unknown"}
             </p>
 
             {details.tagline && (
@@ -74,7 +95,7 @@ export const MovieDetailPage = () => {
             )}
 
             <div className="flex flex-wrap gap-2 mb-6">
-              {details.genres.map((genre) => (
+              {details.genres?.map((genre) => (
                 <span
                   key={genre.id}
                   className="border rounded-full text-xs px-2 py-1">
@@ -86,7 +107,11 @@ export const MovieDetailPage = () => {
             <div className="grid sm:grid-cols-2 gap-4 mb-6 text-sm">
               <div>
                 <h3 className="text-gray-500 font-medium mb-1">Release Date</h3>
-                <p>{formatDate(details.release_date)}</p>
+                <p>
+                  {details.release_date
+                    ? formatDate(details.release_date)
+                    : "Unknown"}
+                </p>
               </div>
               {details.runtime && (
                 <div>
@@ -110,12 +135,17 @@ export const MovieDetailPage = () => {
 
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center gap-1 text-sm">
-                <StarIcon className="w-4 h-4" />
+                <StarIcon className="w-4 h-4 text-yellow-500" />
                 <span className="font-medium">
-                  {details.vote_average.toFixed(1)}
+                  {details.vote_average
+                    ? details.vote_average.toFixed(1)
+                    : "N/A"}
+                  /10
                 </span>
                 <span className="text-gray-500">
-                  ({details.vote_count.toLocaleString()})
+                  (of{" "}
+                  {details.vote_count ? details.vote_count.toLocaleString() : 0}{" "}
+                  user reviews)
                 </span>
               </div>
               {officialTrailer && (

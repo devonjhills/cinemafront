@@ -1,5 +1,5 @@
 import { StarIcon as SolidStar } from "@heroicons/react/24/solid";
-import type { Movie } from "../types/movie";
+import type { MovieListEntry } from "../types/movie";
 import { getImageUrl } from "../api/tmdbApi";
 import { Link } from "react-router-dom";
 import { formatDate } from "../utils/formatDate";
@@ -7,7 +7,7 @@ import { formatDate } from "../utils/formatDate";
 const FALLBACK_POSTER_URL = "https://placehold.co/300x500?text=No+Poster+Found";
 
 interface MovieCardProps {
-  movie: Movie;
+  movie: MovieListEntry;
 }
 
 const MovieCard = ({ movie }: MovieCardProps) => {
@@ -28,7 +28,9 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         />
 
         <div className="p-4 flex flex-col flex-grow">
-          <h3 className="text-base font-medium leading-tight text-gray-900" title={movie.title}>
+          <h3
+            className="text-base font-medium leading-tight text-gray-900"
+            title={movie.title}>
             {movie.title}
           </h3>
 
@@ -40,10 +42,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             <div className="flex items-center text-sm text-gray-800">
               <SolidStar className="w-4 h-4 text-yellow-500" />
               <span className="ml-1">
-                {movie.vote_average.toFixed(1)}
-              </span>
-              <span className="ml-1 text-gray-600">
-                ({movie.vote_count.toLocaleString()})
+                {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
               </span>
             </div>
           </div>
