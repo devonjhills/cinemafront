@@ -17,11 +17,11 @@ const MovieCard = ({ movie }: MovieCardProps) => {
 
   return (
     <Link to={`/movie/${movie.id}`} className="block h-full group">
-      <div className="bg-gray-50 border border-gray-200 rounded-lg h-full flex flex-col transition-all hover:bg-gray-100 hover:shadow-md">
+      <div className="bg-white border border-gray-200 rounded-xl h-full flex flex-col transition-all hover:shadow-lg hover:scale-105 shadow-sm">
         <img
           src={posterUrl}
           alt={`Poster for ${movie.title}`}
-          className="w-full aspect-[2/3] object-cover rounded-t-lg"
+          className="w-full aspect-[2/3] object-cover rounded-t-xl"
           onError={(e) => {
             (e.target as HTMLImageElement).src = FALLBACK_POSTER_URL;
           }}
@@ -29,17 +29,17 @@ const MovieCard = ({ movie }: MovieCardProps) => {
 
         <div className="p-4 flex flex-col flex-grow">
           <h3
-            className="text-base font-medium leading-tight text-gray-900"
+            className="text-base font-semibold leading-tight text-gray-900 group-hover:text-blue-600 transition-colors"
             title={movie.title}>
             {movie.title}
           </h3>
 
-          <p className="text-sm text-gray-700 mt-1">
+          <p className="text-sm text-gray-600 mt-2">
             {formatDate(movie.release_date)}
           </p>
 
-          <div className="mt-auto pt-3">
-            <div className="flex items-center text-sm text-gray-800">
+          <div className="mt-auto pt-4">
+            <div className="flex items-center text-sm font-medium text-gray-800">
               <SolidStar className="w-4 h-4 text-yellow-500" />
               <span className="ml-1">
                 {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}

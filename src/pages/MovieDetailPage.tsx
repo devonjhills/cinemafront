@@ -43,9 +43,9 @@ export const MovieDetailPage = () => {
     ? getImageUrl(details.poster_path, "w500")
     : "https://placehold.co/500x750?text=No+Poster";
 
-  const getCrewByJob = (job: string) => 
+  const getCrewByJob = (job: string) =>
     credits?.crew.find((member) => member.job === job);
-  
+
   const getCrewByJobs = (jobs: string[]) =>
     credits?.crew.filter((member) => jobs.includes(member.job)) || [];
 
@@ -54,22 +54,19 @@ export const MovieDetailPage = () => {
   const cast = credits?.cast || [];
 
   return (
-    <div className="bg-white min-h-screen">
-      <div className="max-w-6xl mx-auto px-6 py-6">
+    <div className="max-w-6xl mx-auto px-6">
+      <div className="mb-6">
         <BackButton onClick={handleBack} />
       </div>
+      <MovieHeader
+        details={details}
+        posterUrl={posterUrl}
+        director={director}
+        writers={writers}
+        officialTrailer={officialTrailer}
+      />
 
-      <div className="max-w-6xl mx-auto px-6 pb-12">
-        <MovieHeader
-          details={details}
-          posterUrl={posterUrl}
-          director={director}
-          writers={writers}
-          officialTrailer={officialTrailer}
-        />
-
-        <MovieCast cast={cast} />
-      </div>
+      <MovieCast cast={cast} />
     </div>
   );
 };

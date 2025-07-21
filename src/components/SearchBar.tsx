@@ -48,7 +48,7 @@ export const SearchBar = ({
       <button
         onClick={handleSearch}
         disabled={!searchInput.trim()}
-        className="px-4 py-2 bg-black text-white text-sm border border-black hover:bg-gray-800 focus:outline-none transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-black">
+        className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600">
         Search
       </button>
       {value && (

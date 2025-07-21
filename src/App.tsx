@@ -7,11 +7,11 @@ import { MovieDetailPage } from "./pages/MovieDetailPage";
 
 export const App = () => {
   return (
-    <div className="bg-white min-h-screen flex flex-col">
+    <div className="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen flex flex-col">
       <ScrollToTop />
       <Header />
       
-      <main className="flex-1">
+      <main className="flex-1 py-8">
         <Routes>
           <Route path="/" element={<MovieListPage />} />
           <Route path="/movie/:movieId" element={<MovieDetailPage />} />

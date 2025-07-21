@@ -86,9 +86,9 @@ export const MovieListPage = () => {
     : undefined;
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-8">
-      <div className="space-y-6">
-        <div className="border border-gray-300 rounded-lg bg-white p-6">
+    <div className="max-w-6xl mx-auto px-6">
+      <div className="space-y-8">
+        <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-1">
               <CategorySelector
@@ -112,20 +112,22 @@ export const MovieListPage = () => {
         </div>
 
         <div>
-          <div className="mb-6 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <h2 className="text-xl font-semibold text-gray-900">
-                {getCategoryDisplayName()}
-              </h2>
-              {searchQuery && (
-                <button
-                  onClick={handleSearchClear}
-                  className="text-sm text-blue-600 hover:text-blue-800 transition-colors cursor-pointer">
-                  Clear
-                </button>
-              )}
+          <div className="mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <h2 className="text-xl font-semibold text-gray-900">
+                  {getCategoryDisplayName()}
+                </h2>
+                {searchQuery && (
+                  <button
+                    onClick={handleSearchClear}
+                    className="text-sm text-blue-600 hover:text-blue-800 transition-colors cursor-pointer">
+                    Clear
+                  </button>
+                )}
+              </div>
+              <MovieSorter sortBy={sortBy} onChange={setSortBy} />
             </div>
-            <MovieSorter sortBy={sortBy} onChange={setSortBy} />
           </div>
 
           <MovieGrid

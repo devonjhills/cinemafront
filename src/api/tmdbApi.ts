@@ -19,6 +19,7 @@ const apiClient = axios.create({
   params: {
     api_key: apiKey,
     language: "en-US",
+    include_adult: false,
   },
 });
 
