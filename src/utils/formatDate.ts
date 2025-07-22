@@ -3,6 +3,7 @@ export const formatDate = (dateString: string | null | undefined): string => {
     return "TBA";
   }
   try {
+    // Set time to midnight to avoid local timezone changing date
     const date = new Date(`${dateString}T00:00:00`);
 
     return date.toLocaleDateString("en-US", {
