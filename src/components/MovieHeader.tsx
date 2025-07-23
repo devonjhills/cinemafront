@@ -22,7 +22,7 @@ export const MovieHeader = ({
   officialTrailer,
 }: MovieHeaderProps) => {
   return (
-    <div className="space-y-8">
+    <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 space-y-8">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="w-48 mx-auto md:w-64 lg:w-80 md:mx-0 flex-shrink-0">
           <img

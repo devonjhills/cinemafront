@@ -7,7 +7,7 @@ import { MovieDetailPage } from "./pages/MovieDetailPage";
 
 export const App = () => {
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <ScrollToTop />
       <Header />
 
