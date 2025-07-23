@@ -26,7 +26,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       to={`/movie/${movie.id}`}
       className="block h-full group"
       aria-label={`View details for ${movie.title}`}>
-      <div className="bg-white border border-gray-200 rounded-xl h-full flex flex-col transition-all hover:shadow-lg hover:scale-105 shadow-sm">
+      <div className="bg-white border border-gray-200 rounded-xl h-full flex flex-col transition-all hover:shadow-xl hover:scale-105 shadow-md hover:border-gray-300">
         <img
           src={posterUrl}
           alt={`Poster for ${movie.title}`}
