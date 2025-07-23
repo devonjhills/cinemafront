@@ -22,7 +22,10 @@ export const MovieSorter = ({ sortBy, onChange }: MovieSorterProps) => {
       <span className="text-sm text-gray-700">Sort by:</span>
       <Listbox value={sortBy} onChange={onChange}>
         <div className="relative">
-          <ListboxButton className="relative rounded-lg border border-gray-300 bg-white py-1.5 pl-3 pr-8 text-left text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 min-w-[140px]">
+          <ListboxButton 
+            className="relative rounded-lg border border-gray-300 bg-white py-1.5 pl-3 pr-8 text-left text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 min-w-[140px]"
+            aria-label="Sort movies by"
+          >
             <span className="block truncate">{sortBy.name}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronDownIcon className="h-4 w-4 text-gray-400" />

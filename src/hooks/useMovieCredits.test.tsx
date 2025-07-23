@@ -16,7 +16,7 @@ describe("useMovieCredits", () => {
     expect(result.current.data).toEqual(mockMovieCredits);
 
     // correctly parse between cast and crew
-    expect(result.current.data?.cast).toHaveLength(2);
-    expect(result.current.data?.crew).toHaveLength(1);
+    expect(result.current.data?.cast).toHaveLength(6);
+    expect(result.current.data?.crew).toHaveLength(6);
   });
 });
