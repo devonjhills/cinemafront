@@ -67,7 +67,7 @@ export const MovieHeader = ({
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <CalendarDaysIcon className="w-4 h-4 text-gray-400" />
-                <h3 className="text-gray-500 font-semibold">Release Date</h3>
+                <h2 className="text-gray-500 font-semibold">Release Date</h2>
               </div>
               <p className="font-medium ml-6">
                 {details.release_date
@@ -78,7 +78,7 @@ export const MovieHeader = ({
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <ClockIcon className="w-4 h-4 text-gray-400" />
-                <h3 className="text-gray-500 font-semibold">Runtime</h3>
+                <h2 className="text-gray-500 font-semibold">Runtime</h2>
               </div>
               <p className="font-medium ml-6">
                 {details.runtime && details.runtime > 0
@@ -89,7 +89,7 @@ export const MovieHeader = ({
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <CurrencyDollarIcon className="w-4 h-4 text-gray-400" />
-                <h3 className="text-gray-500 font-semibold">Budget</h3>
+                <h2 className="text-gray-500 font-semibold">Budget</h2>
               </div>
               <p className="font-medium ml-6">
                 {details.budget && details.budget > 0
@@ -100,7 +100,7 @@ export const MovieHeader = ({
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <BanknotesIcon className="w-4 h-4 text-gray-400" />
-                <h3 className="text-gray-500 font-semibold">Revenue</h3>
+                <h2 className="text-gray-500 font-semibold">Revenue</h2>
               </div>
               <p className="font-medium ml-6">
                 {details.revenue && details.revenue > 0

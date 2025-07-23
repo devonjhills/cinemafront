@@ -36,9 +36,9 @@ export const CategorySelector = ({
 
   return (
     <div>
-      <h3 className="text-sm font-medium text-gray-700 mb-3">
+      <h2 className="text-sm font-medium text-gray-700 mb-3">
         Browse curated lists
-      </h3>
+      </h2>
       <div className="min-w-[200px]">
         <Listbox value={value} onChange={onChange}>
           <div className="relative">

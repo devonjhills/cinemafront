@@ -1,69 +1,68 @@
-# React + TypeScript + Vite
+# CinemaFront
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A single-page movie discovery web app built with React, TypeScript, and the TMDB API.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Core Technologies
 
-## Expanding the ESLint configuration
+- **React 19** - View layer as required, using the latest version for modern React features
+- **TypeScript** - Required for type safety and better development experience
+- **Vite** - Fast modern build tool and development server
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### API & Data Management
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **TMDB API** - Chosen for its comprehensive database with rich metadata, images, and search capabilities
+- **TanStack Query** - Robust data fetching, caching, and synchronization for API calls
+- **Axios** - HTTP client for reliable API requests with better error handling than fetch
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Styling & UI
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Tailwind CSS** - Utility-first CSS framework for maintainable styling without relying on pre-built UI kits
+- **Headless UI** - Unstyled, accessible UI components that complement Tailwind without being a "fully-styled UI kit"
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Routing & State
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React Router** - Client-side routing for the single-page application
+- **URL State Management** - Custom hook for synchronizing UI state with URL parameters
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Testing
+
+- **Vitest** - Fast, modern jest-like test runner with TypeScript support
+- **React Testing Library** - Testing focused on user behavior rather than implementation details
+- **MSW (Mock Service Worker)** - API mocking for reliable, realistic integration testing
+
+## Setup
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd cinemafront
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Then add the TMDB API key (provided in email) to the `.env` file.
+
+4. **Run the application**
+   ```bash
+   npm run dev
+   ```
+   The app will be available at `http://localhost:5173`
+
+## Additional Commands
+
+- `npm run test` - Run all tests
+- `npm run build` - Build for production
+- `npm run lint` - Run linting

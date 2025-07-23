@@ -99,9 +99,9 @@ export const MovieListPage = () => {
             </div>
 
             <div className="lg:col-span-3">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">
+              <h2 className="text-sm font-medium text-gray-700 mb-3">
                 OR search by movie title
-              </h3>
+              </h2>
               <SearchBar
                 onSearch={handleSearch}
                 onClear={handleSearchClear}
