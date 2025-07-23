@@ -2,6 +2,8 @@
 
 A single-page movie discovery web app built with React, TypeScript, and the TMDB API.
 
+<img width="1122" height="823" alt="Screenshot 2025-07-23 at 5 08 38 AM" src="https://github.com/user-attachments/assets/34a5cb4d-bb97-465b-b648-eb4966a620d9" />
+
 ## Tech Stack
 
 ### Core Technologies
@@ -19,7 +21,7 @@ A single-page movie discovery web app built with React, TypeScript, and the TMDB
 ### Styling & UI
 
 - **Tailwind CSS** - Utility-first CSS framework for maintainable styling without relying on pre-built UI kits
-- **Headless UI** - Unstyled, accessible UI components that complement Tailwind without being a "fully-styled UI kit"
+- **Headless UI** - Unstyled, accessible UI components that complement Tailwind
 
 ### Routing & State
 
@@ -37,7 +39,7 @@ A single-page movie discovery web app built with React, TypeScript, and the TMDB
 1. **Clone the repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/devonjhills/cinemafront.git
    cd cinemafront
    ```
 
