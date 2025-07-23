@@ -8,6 +8,15 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
+/**
+ * Search input component with form submission, clear functionality, and accessibility features.
+ *
+ * @param onSearch - Callback when user submits search
+ * @param onClear - Callback when user clears input
+ * @param value - Current search value from parent (used to show/hide clear button)
+ * @param placeholder - Input placeholder text
+ * @returns Form with search input, search button, and conditional clear button
+ */
 export const SearchBar = ({
   onSearch,
   onClear,

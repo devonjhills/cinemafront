@@ -6,7 +6,7 @@ import { CategorySelector } from "./CategorySelector";
 const mockCategories = [
   { value: "popular", label: "Popular" },
   { value: "top_rated", label: "Top Rated" },
-  { value: "now_playing", label: "Now Playing" }, // updated
+  { value: "now_playing", label: "Now Playing" },
 ];
 
 describe("CategorySelector", () => {
@@ -34,10 +34,7 @@ describe("CategorySelector", () => {
       />
     );
 
-    // Open dropdown
     await user.click(screen.getByRole("button"));
-
-    // Check that all options are present in the dropdown
     expect(screen.getByRole("listbox")).toBeInTheDocument();
     expect(screen.getAllByRole("option")).toHaveLength(mockCategories.length);
   });
@@ -54,10 +51,7 @@ describe("CategorySelector", () => {
       />
     );
 
-    // open dropdown
     await user.click(screen.getByRole("button"));
-
-    // click "Top Rated" option
     await user.click(screen.getByText("Top Rated"));
 
     expect(onChange).toHaveBeenCalledWith("top_rated");
@@ -76,8 +70,8 @@ describe("CategorySelector", () => {
     );
 
     const button = screen.getByRole("button");
-    await user.click(button); // open dropdown
-    await user.keyboard("{ArrowDown}{Enter}"); // move to "Top Rated" and select
+    await user.click(button);
+    await user.keyboard("{ArrowDown}{Enter}");
 
     expect(onChange).toHaveBeenCalledWith("top_rated");
   });

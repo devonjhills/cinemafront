@@ -49,9 +49,9 @@ describe("TMDB API", () => {
       const result = await searchMovies("  Superman  ");
 
       expect(result.results).toHaveLength(1);
-      expect(
-        result.results.some((movie) => movie.title === "Superman")
-      ).toBe(true);
+      expect(result.results.some((movie) => movie.title === "Superman")).toBe(
+        true
+      );
     });
   });
 

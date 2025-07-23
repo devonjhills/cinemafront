@@ -1,5 +1,10 @@
+/**
+ * Formats a numeric amount as USD currency with proper error handling.
+ *
+ * @param amount - Numeric amount to format
+ * @returns Formatted currency string (e.g., "$150,000,000") or "Not disclosed" for invalid/zero amounts
+ */
 export const formatCurrency = (amount: number): string => {
-  // Because api parsing returns 0 if null
   if (amount === 0) return "Not disclosed";
 
   // Handle invalid amounts (negative, NaN, Infinity)

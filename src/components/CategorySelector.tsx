@@ -17,6 +17,14 @@ type CategorySelectorProps = {
   onChange: (value: string) => void;
 };
 
+/**
+ * A dropdown selector for movie categories with keyboard and screen reader support.
+ *
+ * @param categories - Available movie category options to display
+ * @param value - Currently selected category
+ * @param onChange - Callback when user selects a different category
+ * @returns Accessible dropdown using HeadlessUI Listbox component
+ */
 export const CategorySelector = ({
   categories,
   value,
@@ -34,7 +42,7 @@ export const CategorySelector = ({
       <div className="min-w-[200px]">
         <Listbox value={value} onChange={onChange}>
           <div className="relative">
-            <ListboxButton 
+            <ListboxButton
               aria-label="Select movie category"
               className="relative w-full rounded-lg border border-gray-300 bg-white py-2 pl-3 pr-10 text-left text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
               <span className="block truncate">

@@ -75,7 +75,6 @@ export const handlers = [
     });
   }),
 
-  // Search movies
   http.get(`${BASE_URL}/search/movie`, ({ request }) => {
     const url = new URL(request.url);
     const query = url.searchParams.get("query");

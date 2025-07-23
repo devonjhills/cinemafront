@@ -9,6 +9,16 @@ interface MovieGridProps {
   emptyMessage?: string;
 }
 
+/**
+ * Responsive grid layout for displaying movie cards with loading, error, and empty states.
+ *
+ * @param movies - Array of movies to display in grid format
+ * @param isLoading - Boolean for if data is currently being fetched
+ * @param isError - Boolean for if fetch operation failed
+ * @param error - Error object from failed fetch operation
+ * @param emptyMessage - Message when no movies are found
+ * @returns Grid layout with MovieCard components or appropriate state message
+ */
 export const MovieGrid = ({
   movies,
   isLoading,

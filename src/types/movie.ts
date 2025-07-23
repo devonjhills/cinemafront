@@ -1,9 +1,17 @@
 // interfaces as defined by https://developer.themoviedb.org/reference/
+
+/**
+ * Movie genre as returned by TMDB API.
+ */
 export interface Genre {
   id: number;
   name: string;
 }
 
+/**
+ * Base movie properties shared between list entries and detailed movie objects.
+ * Contains core movie information available in all TMDB movie responses.
+ */
 export interface MovieBase {
   id: number;
   overview: string;
@@ -19,6 +27,9 @@ export interface MovieListEntry extends MovieBase {
   genre_ids: number[];
 }
 
+/**
+ * Complete movie information from TMDB movie details endpoint.
+ */
 export interface MovieDetails extends MovieBase {
   budget: number;
   genres: Genre[];
@@ -27,6 +38,10 @@ export interface MovieDetails extends MovieBase {
   tagline: string | null;
 }
 
+/**
+ * Cast member information from TMDB movie credits endpoint.
+ * Ordered by billing prominence (order field).
+ */
 export interface CastMember {
   id: number;
   name: string;
@@ -36,6 +51,9 @@ export interface CastMember {
   order: number;
 }
 
+/**
+ * Crew member information from TMDB movie credits endpoint.
+ */
 export interface CrewMember {
   id: number;
   name: string;
@@ -61,6 +79,10 @@ export interface MovieVideosResponse {
   results: Video[];
 }
 
+/**
+ * TMDB API response structure for paginated movie lists.
+ * Used by popular, top-rated, now-playing, and search endpoints.
+ */
 export interface MovieListResponse {
   page: number;
   results: MovieListEntry[];
@@ -68,6 +90,9 @@ export interface MovieListResponse {
   total_results: number;
 }
 
+/**
+ * TMDB API response structure for movie cast and crew information.
+ */
 export interface MovieCreditsResponse {
   id: number;
   cast: CastMember[];

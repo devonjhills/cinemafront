@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+/**
+ * Manages synchronization between component state and URL search parameters.
+ *
+ * @returns Object containing current state values and their setters:
+ *   - searchQuery: Current search term from URL or empty string
+ *   - setSearchQuery: Function to update search term and URL
+ *   - browseCategory: Current category from URL or 'popular' default
+ *   - setBrowseCategory: Function to update category and URL
+ */
 export const useUrlState = () => {
   const location = useLocation();
   const navigate = useNavigate();

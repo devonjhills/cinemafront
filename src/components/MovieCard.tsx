@@ -10,6 +10,12 @@ interface MovieCardProps {
   movie: MovieListEntry;
 }
 
+/**
+ * Displays a movie in a card format ready for grid layouts.
+ *
+ * @param movie - Movie data from TMDB API containing id, title, poster_path, release_date, and vote_average
+ * @returns JSX element representing a movie card
+ */
 const MovieCard = ({ movie }: MovieCardProps) => {
   const posterUrl = movie.poster_path
     ? getImageUrl(movie.poster_path, "w500")

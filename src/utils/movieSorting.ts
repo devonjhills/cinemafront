@@ -5,6 +5,9 @@ export interface SortOption {
   name: string;
 }
 
+/**
+ * Available sorting options for movie lists.
+ */
 export const sortOptions: SortOption[] = [
   { value: "popularity.desc", name: "Most Popular" },
   { value: "popularity.asc", name: "Least Popular" },
@@ -18,12 +21,19 @@ const getDateValue = (dateString: string | null | undefined): number => {
   return dateString ? new Date(dateString).getTime() : 0;
 };
 
+/**
+ * Sorts an array of movies based on the specified sort criteria.
+ *
+ * @param movies - Array of movies to sort
+ * @param sortBy - Sort criteria matching a SortOption.value (e.g., 'popularity.desc')
+ * @returns New sorted array of movies, or empty array if input is invalid
+ */
 export const sortMovies = (
   movies: MovieListEntry[],
   sortBy: string
 ): MovieListEntry[] => {
   if (!movies) return [];
-  
+
   return [...movies].sort((a, b) => {
     switch (sortBy) {
       case "popularity.desc":
