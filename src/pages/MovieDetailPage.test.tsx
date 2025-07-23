@@ -71,7 +71,7 @@ describe("MovieDetailPage Integration", () => {
 
     // with longer cast data this button should be present
     const showFullButton = screen.getByRole("button", {
-      name: /show all cast & crew/i,
+      name: /toggle cast and crew visibility/i,
     });
     expect(showFullButton).toBeInTheDocument();
 

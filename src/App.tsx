@@ -11,7 +11,7 @@ export const App = () => {
       <ScrollToTop />
       <Header />
 
-      <main className="flex-1 py-8">
+      <main id="main-content" className="flex-1 py-8" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<MovieListPage />} />
           <Route path="/movie/:movieId" element={<MovieDetailPage />} />

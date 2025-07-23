@@ -44,9 +44,13 @@ describe("MovieListPage Integration", () => {
     });
     expect(initialHeading).toBeInTheDocument();
 
-    const searchInput = screen.getByRole("textbox", { name: /search for movies/i });
+    const searchInput = screen.getByRole("textbox", {
+      name: /search for movies/i,
+    });
     await user.type(searchInput, "Superman");
-    await user.click(screen.getByRole("button", { name: /search for movies/i }));
+    await user.click(
+      screen.getByRole("button", { name: /search for movies/i })
+    );
 
     const searchHeading = await screen.findByRole("heading", {
       name: /search results for "superman"/i,
@@ -100,16 +104,22 @@ describe("MovieListPage Integration", () => {
     });
     expect(initialHeading).toBeInTheDocument();
 
-    const searchInput = screen.getByRole("textbox", { name: /search for movies/i });
+    const searchInput = screen.getByRole("textbox", {
+      name: /search for movies/i,
+    });
     await user.type(searchInput, "Superman");
-    await user.click(screen.getByRole("button", { name: /search for movies/i }));
+    await user.click(
+      screen.getByRole("button", { name: /search for movies/i })
+    );
 
     const searchHeading = await screen.findByRole("heading", {
       name: /search results for "superman"/i,
     });
     expect(searchHeading).toBeInTheDocument();
 
-    const clearButton = screen.getByRole("button", { name: /clear search/i });
+    const clearButton = screen.getByRole("button", {
+      name: /clear search results/i,
+    });
     await user.click(clearButton);
 
     const restoredHeading = await screen.findByRole("heading", {

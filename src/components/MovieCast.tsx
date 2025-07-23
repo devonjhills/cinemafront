@@ -97,7 +97,9 @@ export const MovieCast = ({
           {({ open }) => (
             <div>
               <div className="text-center mt-8">
-                <DisclosureButton className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-4 py-2 font-medium text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer mx-auto">
+                <DisclosureButton
+                  className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-4 py-2 font-medium text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer mx-auto"
+                  aria-label="Toggle cast and crew visibility">
                   {open ? "Show Less" : "Show All Cast & Crew"}
                   <ChevronDownIcon
                     className={`w-4 h-4 transform transition-transform ${

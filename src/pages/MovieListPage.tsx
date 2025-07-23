@@ -121,7 +121,8 @@ export const MovieListPage = () => {
                 {searchQuery && (
                   <button
                     onClick={handleSearchClear}
-                    className="text-sm text-blue-600 hover:text-blue-800 transition-colors cursor-pointer">
+                    className="text-sm text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
+                    aria-label="Clear search results">
                     Clear
                   </button>
                 )}

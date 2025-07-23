@@ -18,26 +18,28 @@ export const PersonCard = ({ person, type }: PersonCardProps) => {
       : (person as CrewMember).job;
 
   return (
-    <div className="flex items-center gap-3">
+    <article className="flex items-center gap-3">
       <div className="w-12 h-12 flex-shrink-0">
         {profileUrl ? (
           <img
             src={profileUrl}
-            alt={person.name}
+            alt={`${person.name} profile photo`}
             className="w-full h-full object-cover rounded-full"
           />
         ) : (
-          <div className="w-full h-full bg-gray-100 flex items-center justify-center rounded-full">
+          <div
+            className="w-full h-full bg-gray-100 flex items-center justify-center rounded-full"
+            aria-label={`${person.name} profile photo unavailable`}>
             <UserCircleIcon className="w-8 h-8 text-gray-400" />
           </div>
         )}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-medium text-gray-900 truncate">
+        <h3 className="text-sm font-medium text-gray-900 truncate">
           {person.name}
-        </p>
+        </h3>
         <p className="text-xs text-gray-500 truncate">{subtitle}</p>
       </div>
-    </div>
+    </article>
   );
 };

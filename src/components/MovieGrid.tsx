@@ -18,7 +18,10 @@ export const MovieGrid = ({
 }: MovieGridProps) => {
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-64">
+      <div
+        className="flex justify-center items-center h-64"
+        role="status"
+        aria-live="polite">
         <p className="text-sm">Loading movies...</p>
       </div>
     );
@@ -27,7 +30,7 @@ export const MovieGrid = ({
   if (isError) {
     console.error(error);
     return (
-      <div className="flex justify-center items-center h-64">
+      <div className="flex justify-center items-center h-64" role="alert">
         <p className="text-sm text-red-600">
           An error occurred while fetching movies. Please try again later.
         </p>
@@ -36,14 +39,21 @@ export const MovieGrid = ({
   }
 
   if (!movies || movies.length === 0) {
-    return <p className="text-center text-gray-500 text-sm">{emptyMessage}</p>;
+    return (
+      <p className="text-center text-gray-500 text-sm" aria-live="polite">
+        {emptyMessage}
+      </p>
+    );
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+    <section
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+      role="region"
+      aria-label="Movie results">
       {movies.map((movie: MovieListEntry) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
-    </div>
+    </section>
   );
 };

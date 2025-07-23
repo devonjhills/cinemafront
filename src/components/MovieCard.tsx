@@ -16,7 +16,10 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     : FALLBACK_POSTER_URL;
 
   return (
-    <Link to={`/movie/${movie.id}`} className="block h-full group">
+    <Link
+      to={`/movie/${movie.id}`}
+      className="block h-full group"
+      aria-label={`View details for ${movie.title}`}>
       <div className="bg-white border border-gray-200 rounded-xl h-full flex flex-col transition-all hover:shadow-lg hover:scale-105 shadow-sm">
         <img
           src={posterUrl}

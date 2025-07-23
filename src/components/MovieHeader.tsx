@@ -132,7 +132,8 @@ export const MovieHeader = ({
                   href={`https://www.youtube.com/watch?v=${officialTrailer.key}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-red-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-red-700 transition-colors">
+                  className="flex items-center gap-2 bg-red-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-red-700 transition-colors"
+                  aria-label={`Watch ${details.title} trailer on YouTube (opens in new tab)`}>
                   <PlayIcon className="w-4 h-4" />
                   Watch Trailer
                 </a>

@@ -8,7 +8,8 @@ export const Footer = () => {
             href="https://developer.themoviedb.org/reference/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 font-medium transition-colors">
+            className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+            aria-label="Visit The Movie Database developer documentation (opens in new tab)">
             The Movie Database
           </a>
         </p>
