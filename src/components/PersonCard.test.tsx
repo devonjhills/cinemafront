@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "../test/utils";
 import { PersonCard } from "./PersonCard";
 import { getImageUrl } from "../api/tmdbApi";
-import { mockMovieCredits } from "../test/mocks/handlers";
+import { mockMovieCredits } from "../test/mocks/data";
 
 // mock getImageUrl for unit test
 vi.mock("../api/tmdbApi", () => ({
@@ -11,7 +11,7 @@ vi.mock("../api/tmdbApi", () => ({
   ),
 }));
 
-// Use mock data from handlers for consistency
+// use mock data from data file for consistency
 const mockCast = mockMovieCredits.cast[0];
 const mockCrew = mockMovieCredits.crew[0];
 

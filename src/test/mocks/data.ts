@@ -1,0 +1,183 @@
+import type {
+  MovieListResponse,
+  MovieDetails,
+  MovieCreditsResponse,
+  MovieVideosResponse,
+} from "../../types/movie";
+
+export const popularMovies: MovieListResponse = {
+  page: 1,
+  total_pages: 100,
+  total_results: 2000,
+  results: [
+    {
+      id: 1,
+      title: "Superman",
+      overview: "Now with a super dog.",
+      release_date: "2025-07-08",
+      poster_path: "/test-poster-1.jpg",
+      vote_average: 7.8,
+      vote_count: 8547,
+      genre_ids: [28, 80, 18],
+      popularity: 100.0,
+    },
+    {
+      id: 2,
+      title: "Spider-Man: No Way Home",
+      overview: "Peter Parker's identity is revealed, chaos ensues",
+      release_date: "2021-12-17",
+      poster_path: "/test-poster-2.jpg",
+      vote_average: 8.1,
+      vote_count: 19543,
+      genre_ids: [28, 12, 878],
+      popularity: 95.0,
+    },
+  ],
+};
+
+export const nowPlayingMovies: MovieListResponse = {
+  page: 1,
+  total_pages: 50,
+  total_results: 1000,
+  results: [
+    {
+      id: 3,
+      title: "Deadpool & Wolverine",
+      overview: "Wade Wilson teams up with Wolverine for one last mission",
+      release_date: "2024-07-24",
+      poster_path: "/test-poster-3.jpg",
+      vote_average: 7.7,
+      vote_count: 4521,
+      genre_ids: [28, 35, 878],
+      popularity: 92.0,
+    },
+    {
+      id: 4,
+      title: "Guardians of the Galaxy Vol. 3",
+      overview: "The Guardians guard a third time.",
+      release_date: "2023-05-05",
+      poster_path: "/test-poster-4.jpg",
+      vote_average: 8.0,
+      vote_count: 6789,
+      genre_ids: [28, 12, 878],
+      popularity: 88.0,
+    },
+  ],
+};
+
+export const topRatedMovies: MovieListResponse = {
+  page: 1,
+  total_pages: 80,
+  total_results: 1600,
+  results: [
+    {
+      id: 5,
+      title: "The Dark Knight",
+      overview: "Top rated batman movie!",
+      release_date: "2008-07-18",
+      poster_path: "/test-poster-5.jpg",
+      vote_average: 9.0,
+      vote_count: 32543,
+      genre_ids: [28, 80, 18],
+      popularity: 85.0,
+    },
+    {
+      id: 6,
+      title: "Avengers: Endgame",
+      overview: "The Avengers end the game.",
+      release_date: "2019-04-26",
+      poster_path: "/test-poster-6.jpg",
+      vote_average: 8.3,
+      vote_count: 24876,
+      genre_ids: [28, 12, 18],
+      popularity: 75.0,
+    },
+  ],
+};
+
+export const mockMovieDetails: MovieDetails = {
+  id: 1,
+  title: "Superman",
+  overview: "Superman epic detailed overview ",
+  release_date: "2025-07-08",
+  poster_path: "/test-poster-1.jpg",
+  vote_average: 7.8,
+  vote_count: 8547,
+  popularity: 100.0,
+  runtime: 120,
+  budget: 50000000,
+  revenue: 150000000,
+  tagline: "Mysterious Superman Tagline",
+  genres: [
+    { id: 28, name: "Action" },
+    { id: 12, name: "Adventure" },
+  ],
+};
+
+export const mockMovieCredits: MovieCreditsResponse = {
+  id: 1,
+  cast: [
+    {
+      id: 1,
+      name: "Christian Bale",
+      character: "Main Character",
+      profile_path: "/test-actor-1.jpg",
+      order: 0,
+      credit_id: "test-credit-1",
+    },
+    {
+      id: 2,
+      name: "Heath Ledger",
+      character: "Supporting Character",
+      profile_path: "/test-actor-2.jpg",
+      order: 1,
+      credit_id: "test-credit-2",
+    },
+  ],
+  crew: [
+    {
+      id: 3,
+      name: "Christopher Nolan",
+      job: "Director",
+      department: "Directing",
+      profile_path: "/test-director.jpg",
+      credit_id: "test-credit-3",
+    },
+  ],
+};
+
+export const mockMovieVideos: MovieVideosResponse = {
+  id: 1,
+  results: [
+    {
+      id: "video-1",
+      name: "Behind the Scenes",
+      key: "behind-scenes-123",
+      site: "YouTube",
+      size: 1080,
+      type: "Behind the Scenes",
+      iso_639_1: "en",
+      iso_3166_1: "US",
+    },
+    {
+      id: "video-2",
+      name: "Official Trailer",
+      key: "qwerty",
+      site: "YouTube",
+      size: 1080,
+      type: "Trailer",
+      iso_639_1: "en",
+      iso_3166_1: "US",
+    },
+    {
+      id: "video-3",
+      name: "Vimeo Trailer",
+      key: "vimeo-123",
+      site: "Vimeo",
+      size: 1080,
+      type: "Trailer",
+      iso_639_1: "en",
+      iso_3166_1: "US",
+    },
+  ],
+};

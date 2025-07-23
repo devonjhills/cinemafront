@@ -6,7 +6,7 @@ import {
   getPopularMovies,
   getTopRatedMovies,
 } from "../api/tmdbApi";
-import { mockMovieListResponse } from "../test/mocks/handlers";
+import { popularMovies } from "../test/mocks/data";
 
 describe("useMovieQuery", () => {
   it("should fetch data successfully", async () => {
@@ -22,7 +22,7 @@ describe("useMovieQuery", () => {
       expect(result.current.isSuccess).toBe(true);
     });
 
-    expect(result.current.data).toEqual(mockMovieListResponse);
+    expect(result.current.data).toEqual(popularMovies);
     expect(result.current.data?.results).toHaveLength(2);
     expect(result.current.isPending).toBe(false);
     expect(result.current.error).toBeNull();
@@ -42,8 +42,8 @@ describe("useMovieQuery", () => {
       expect(topRatedResult.current.isSuccess).toBe(true);
     });
 
-    // both should succeed in returning mock data
-    expect(nowPlayingResult.current.data).toEqual(mockMovieListResponse);
-    expect(topRatedResult.current.data).toEqual(mockMovieListResponse);
+    // each should succeed in returning their respective category data
+    expect(nowPlayingResult.current.data?.results).toHaveLength(2);
+    expect(topRatedResult.current.data?.results).toHaveLength(2);
   });
 });

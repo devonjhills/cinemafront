@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "../test/utils";
 import MovieCard from "./MovieCard";
 import { getImageUrl } from "../api/tmdbApi";
 import { formatDate } from "../utils/formatDate";
-import { mockMovieListResponse } from "../test/mocks/handlers";
+import { popularMovies } from "../test/mocks/data";
 
 // mock utils for unit tests
 vi.mock("../api/tmdbApi", () => ({
@@ -15,8 +15,8 @@ vi.mock("../utils/formatDate", () => ({
   formatDate: vi.fn((date: string) => `formatted-${date}`),
 }));
 
-// Use mock data from handlers for consistency
-const baseMovie = mockMovieListResponse.results[0];
+// use mock data from data file for consistency
+const baseMovie = popularMovies.results[0];
 
 describe("MovieCard", () => {
   beforeEach(() => {
@@ -27,7 +27,7 @@ describe("MovieCard", () => {
     render(<MovieCard movie={baseMovie} />);
 
     const poster = screen.getByRole("img", {
-      name: /Poster for The Batman/i,
+      name: /Poster for Superman/i,
     });
     expect(poster).toHaveAttribute(
       "src",
@@ -52,7 +52,7 @@ describe("MovieCard", () => {
     render(<MovieCard movie={noPosterMovie} />);
 
     const poster = screen.getByRole("img", {
-      name: /Poster for The Batman/i,
+      name: /Poster for Superman/i,
     });
     expect(poster).toHaveAttribute(
       "src",
@@ -64,7 +64,7 @@ describe("MovieCard", () => {
     render(<MovieCard movie={baseMovie} />);
 
     const poster = screen.getByRole("img", {
-      name: /Poster for The Batman/i,
+      name: /Poster for Superman/i,
     });
     fireEvent.error(poster);
 

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { renderHook, waitFor } from "../test/utils";
 import { useMovieTrailer } from "./useMovieTrailer";
-import { mockMovieVideos } from "../test/mocks/handlers";
+import { mockMovieVideos } from "../test/mocks/data";
 
 describe("useMovieTrailer", () => {
   it("should fetch movie videos and find official trailer", async () => {
@@ -13,12 +13,9 @@ describe("useMovieTrailer", () => {
       expect(result.current.isSuccess).toBe(true);
     });
 
-    expect(result.current.data).toEqual({
-      ...mockMovieVideos,
-      id: 1,
-    });
+    expect(result.current.data).toEqual(mockMovieVideos);
 
-    // Should find the official YouTube trailer
+    // should find the official YouTube trailer
     expect(result.current.officialTrailer).toBeDefined();
     expect(result.current.officialTrailer?.site).toBe("YouTube");
     expect(result.current.officialTrailer?.type).toBe("Trailer");

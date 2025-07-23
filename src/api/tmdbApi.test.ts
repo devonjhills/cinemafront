@@ -46,10 +46,12 @@ describe("TMDB API", () => {
     });
 
     it("should trim whitespace from search queries", async () => {
-      const result = await searchMovies("  Batman  ");
+      const result = await searchMovies("  Superman  ");
 
       expect(result.results).toHaveLength(1);
-      expect(result.results[0].title).toBe("The Batman");
+      expect(
+        result.results.some((movie) => movie.title === "Superman")
+      ).toBe(true);
     });
   });
 

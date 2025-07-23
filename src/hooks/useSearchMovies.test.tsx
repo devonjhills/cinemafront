@@ -4,25 +4,29 @@ import { useSearchMovies } from "./useSearchMovies";
 
 describe("useSearchMovies", () => {
   it("should search movies successfully", async () => {
-    const { result } = renderHook(() => useSearchMovies("Batman"));
+    const { result } = renderHook(() => useSearchMovies("Superman"));
 
     await waitFor(() => {
       expect(result.current.isSuccess).toBe(true);
     });
 
     expect(result.current.data?.results).toHaveLength(1);
-    expect(result.current.data?.results[0].title).toBe("The Batman");
+    expect(
+      result.current.data?.results.some((movie) => movie.title === "Superman")
+    ).toBe(true);
   });
 
   it("should search with partial query", async () => {
-    const { result } = renderHook(() => useSearchMovies("super"));
+    const { result } = renderHook(() => useSearchMovies("Spider"));
 
     await waitFor(() => {
       expect(result.current.isSuccess).toBe(true);
     });
 
     expect(result.current.data?.results).toHaveLength(1);
-    expect(result.current.data?.results[0].title).toBe("Superman");
+    expect(result.current.data?.results[0].title).toBe(
+      "Spider-Man: No Way Home"
+    );
   });
 
   it("should return empty results for no matches", async () => {
@@ -50,14 +54,14 @@ describe("useSearchMovies", () => {
   });
 
   it("should work with single character search", async () => {
-    const { result } = renderHook(() => useSearchMovies("x"));
+    const { result } = renderHook(() => useSearchMovies("z"));
 
     // hook attempts to search
     await waitFor(() => {
       expect(result.current.isSuccess).toBe(true);
     });
 
-    // no match for "x" in mock data
+    // no match for "z" in our mock data
     expect(result.current.data?.results).toHaveLength(0);
   });
 
@@ -73,7 +77,7 @@ describe("useSearchMovies", () => {
     expect(result.current.fetchStatus).toBe("idle");
 
     // enable with valid query
-    rerender({ query: "Batman" });
+    rerender({ query: "Superman" });
 
     await waitFor(() => {
       expect(result.current.isSuccess).toBe(true);
@@ -91,7 +95,7 @@ describe("useSearchMovies", () => {
     const { result, rerender } = renderHook(
       ({ query }) => useSearchMovies(query),
       {
-        initialProps: { query: "Batman" },
+        initialProps: { query: "Superman" },
       }
     );
 
@@ -99,15 +103,19 @@ describe("useSearchMovies", () => {
       expect(result.current.isSuccess).toBe(true);
     });
 
-    expect(result.current.data?.results[0].title).toBe("The Batman");
+    expect(
+      result.current.data?.results.some((movie) => movie.title === "Superman")
+    ).toBe(true);
 
     // change query
-    rerender({ query: "Superman" });
+    rerender({ query: "Spider" });
 
     await waitFor(() => {
       expect(result.current.isSuccess).toBe(true);
     });
 
-    expect(result.current.data?.results[0].title).toBe("Superman");
+    expect(result.current.data?.results[0].title).toBe(
+      "Spider-Man: No Way Home"
+    );
   });
 });
